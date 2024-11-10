@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +24,7 @@
 <body>
     <h1>HW6: Interactive Visualizations</h1>
 
-    <!-- Visualization 1: Building Status Distribution -->
+    <!-- Visualization 1: Distribution of Building Status -->
     <div class="chart-container">
         <h2>Distribution of Building Status Across Construction Years</h2>
         <p>
@@ -28,8 +32,8 @@
             The chart groups buildings by decade and uses different colors to represent each status category.
         </p>
         <p>
-            <strong>Design choices:</strong> For the x-axis, an ordinal encoding is used for decades. The y-axis uses a quantitative scale to show the count of buildings. A categorical color scheme is used to distinguish between different building statuses.
-            Tooltips are included to provide additional information when hovering over a bar.
+            <strong>Design choices:</strong> For the x-axis, an ordinal encoding is used for decades (`Year Constructed Bin`). The y-axis uses a quantitative scale to show the count of buildings.
+            A categorical color scheme is used to distinguish between different building statuses. Tooltips are included to provide additional information when hovering over a bar.
         </p>
         <p>
             <strong>Data transformations:</strong> The dataset was cleaned by converting the 'Year Constructed' column to numeric values and grouping the data by decade. Entries with invalid or missing construction years were removed to ensure data accuracy.
@@ -42,13 +46,13 @@
         </p>
         <div id="chart1"></div>
         <script>
-            vegaEmbed('#chart1', 'building_status_distribution.json')
+            vegaEmbed('#chart1', '{{ "/assets/js/building_status_distribution.json" | relative_url }}')
                 .then(() => console.log("Chart 1 loaded"))
                 .catch(console.error);
         </script>
     </div>
 
-    <!-- Visualization 2: Distribution of the number of buildings by county -->
+    <!-- Visualization 2: Distribution of the Number of Buildings by County -->
     <div class="chart-container">
         <h2>Distribution of the Number of Buildings by County</h2>
         <p>
@@ -68,7 +72,7 @@
         </p>
         <div id="chart2"></div>
         <script>
-            vegaEmbed('#chart2', 'county_building_distribution.json')
+            vegaEmbed('#chart2', '{{ "/assets/js/county_building_distribution.json" | relative_url }}')
                 .then(() => console.log("Chart 2 loaded"))
                 .catch(console.error);
         </script>
