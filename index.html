@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW6 Visualizations</title>
+    <!-- 引入 Vega 和 Vega-Lite 库 -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .chart-container {
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>HW6: Interactive Visualizations</h1>
+
+    <!-- Visualization 1: 建筑状态分布 -->
+    <div class="chart-container">
+        <h2>Distribution of Building Status Across Construction Years</h2>
+        <p>
+            <strong>Description:</strong> This visualization displays the distribution of building statuses (Abandon, In Progress, and In Use) across different decades of construction years.
+            The chart groups buildings by decade and uses different colors to represent each status category.
+        </p>
+        <p>
+            <strong>Design choices:</strong> For the x-axis, an ordinal encoding is used for decades. The y-axis uses a quantitative scale to show the count of buildings. A categorical color scheme is used to distinguish between different building statuses.
+            Tooltips are included to provide additional information when hovering over a bar.
+        </p>
+        <p>
+            <strong>Data transformations:</strong> The dataset was cleaned by converting the 'Year Constructed' column to numeric values and grouping the data by decade. Entries with invalid or missing construction years were removed to ensure data accuracy.
+        </p>
+        <p>
+            <strong>Comparison with previous Homework #5:</strong> In Homework #5, a similar visualization was created; however, it was static. For this homework, I added interactivity. Users can now click on the legend to filter by building status (Abandon, In Progress, In Use), making it easier to explore specific data trends.
+        </p>
+        <p>
+            <strong>Interactivity:</strong> Implemented using Altair’s <code>selection_point</code> and <code>add_params</code>. Users can click on the legend to filter different building statuses.
+        </p>
+        <div id="chart1"></div>
+        <script>
+            vegaEmbed('#chart1', 'building_status_distribution.json')
+                .then(() => console.log("Chart 1 loaded"))
+                .catch(console.error);
+        </script>
+    </div>
+
+    <!-- Visualization 2: 各县建筑数量分布 -->
+    <div class="chart-container">
+        <h2>Distribution of the Number of Buildings by County</h2>
+        <p>
+            <strong>Description:</strong> This visualization shows the distribution of buildings across different counties. The bar chart is sorted in descending order, allowing users to quickly identify counties with the highest building counts.
+        </p>
+        <p>
+            <strong>Design choices:</strong> The x-axis uses a quantitative scale for the count of buildings, while the y-axis uses a nominal scale for county names. A consistent color is used for the bars to focus on the count rather than categorical differences.
+        </p>
+        <p>
+            <strong>Data transformations:</strong> The data was preprocessed to group and count buildings by county. Missing or incomplete data entries were filtered out to ensure data integrity.
+        </p>
+        <p>
+            <strong>Comparison with previous Homework #5:</strong> The chart remains mostly static, but I added tooltips to provide more information on hover.
+        </p>
+        <p>
+            <strong>Interactivity:</strong> This visualization includes tooltips to show detailed information when hovering over each bar, enhancing user interaction.
+        </p>
+        <div id="chart2"></div>
+        <script>
+            vegaEmbed('#chart2', 'county_building_distribution.json')
+                .then(() => console.log("Chart 2 loaded"))
+                .catch(console.error);
+        </script>
+    </div>
+
+    <footer>
+        <p>For more details, visit the full project on <a href="https://github.com/yuanyuanzhang0815/HW6">GitHub</a>.</p>
+    </footer>
+</body>
+</html>
