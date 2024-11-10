@@ -1,0 +1,6 @@
+title: "HW6 Visualizations"
+description: "Interactive visualizations for HW6 using Altair and Jekyll"
+baseurl: "/HW6" 
+url: "https://yuanyuanzhang0815.github.io"
+markdown: kramdown
+theme: minima
